@@ -32,3 +32,12 @@ mysql> describe employee_Payroll;
 | startDate | date         | NO   |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
 4 rows in set (0.03 sec)
+
+//UC3
+
+mysql> insert into employee_Payroll (name,salary,startDate) values
+    -> ('Bill',100000.00,'2021-01-01'),
+    -> ('Saket',200000.00,'2021-04-01'),
+    -> ('Farzan',1000000.00,'2021-04-07');
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
