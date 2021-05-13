@@ -54,3 +54,27 @@ mysql> select * from employee_Payroll;
 +----+--------+---------+------------+
 3 rows in set (0.02 sec)
 
+//UC5
+
+mysql> select salary from Employee_payroll WHERE name='Bill';
++--------+
+| salary |
++--------+
+| 100000 |
++--------+
+1 row in set (0.02 sec)
+
+mysql> select * from employee_payroll
+    -> where start between cast('2021-04-01' as date) and date(now());
+ERROR 1054 (42S22): Unknown column 'start' in 'where clause'
+mysql> select * from employee_payroll
+    -> where startDate between cast('2021-04-01' as date) and date(now());
++----+--------+---------+------------+
+| id | name   | salary  | startDate  |
++----+--------+---------+------------+
+|  2 | Saket  |  200000 | 2021-04-01 |
+|  3 | Farzan | 1000000 | 2021-04-07 |
++----+--------+---------+------------+
+2 rows in set (0.02 sec)
+
+
