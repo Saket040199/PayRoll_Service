@@ -109,6 +109,89 @@ mysql> select * from employee_payroll;
 +----+--------+--------+---------+------------+
 3 rows in set (0.00 sec)
 
+//UC7
+
+mysql> update employee_payroll set salary=4000000.00 where name='Saket';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> desc employee_payroll;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(150) | NO   |     | NULL    |                |
+| gender    | char(1)      | YES  |     | NULL    |                |
+| salary    | double       | NO   |     | NULL    |                |
+| startDate | date         | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.03 sec)
+
+mysql> select * from employee_payroll
+    -> where startDate between cast('2021-04-01' as date) and date(now());^C
+mysql> select * from employee_payroll;
++----+--------+--------+---------+------------+
+| id | name   | gender | salary  | startDate  |
++----+--------+--------+---------+------------+
+|  1 | Bill   | M      |  100000 | 2021-01-01 |
+|  2 | Saket  | M      | 4000000 | 2021-04-01 |
+|  3 | Farzan | M      | 1000000 | 2021-04-07 |
++----+--------+--------+---------+------------+
+3 rows in set (0.02 sec)
+
+mysql> update employee_payroll set salary=4000000.00 where name='Bill';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select AVG(salary) from employee_payroll where gender='M' group by gender;
++-------------+
+| AVG(salary) |
++-------------+
+|     3000000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select gender,AVG(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | AVG(salary) |
++--------+-------------+
+| M      |     3000000 |
++--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select gender,SUM(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | SUM(salary) |
++--------+-------------+
+| M      |     9000000 |
++--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select gender,MIN(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | MIN(salary) |
++--------+-------------+
+| M      |     1000000 |
++--------+-------------+
+1 row in set (0.02 sec)
+
+mysql> select gender,MAX(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | MAX(salary) |
++--------+-------------+
+| M      |     4000000 |
++--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select gender,Count(salary) from employee_payroll group by gender;
++--------+---------------+
+| gender | Count(salary) |
++--------+---------------+
+| M      |             3 |
++--------+---------------+
+1 row in set (0.00 sec)
+
+
 
 
 
