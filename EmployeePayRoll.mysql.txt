@@ -41,3 +41,16 @@ mysql> insert into employee_Payroll (name,salary,startDate) values
     -> ('Farzan',1000000.00,'2021-04-07');
 Query OK, 3 rows affected (0.03 sec)
 Records: 3  Duplicates: 0  Warnings: 0
+
+//UC4
+
+mysql> select * from employee_Payroll;
++----+--------+---------+------------+
+| id | name   | salary  | startDate  |
++----+--------+---------+------------+
+|  1 | Bill   |  100000 | 2021-01-01 |
+|  2 | Saket  |  200000 | 2021-04-01 |
+|  3 | Farzan | 1000000 | 2021-04-07 |
++----+--------+---------+------------+
+3 rows in set (0.02 sec)
+
